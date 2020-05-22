@@ -11,33 +11,57 @@ namespace tecboxapi777.Controllers
     public class SellersController : ApiController
     {
         // GET: api/Sellers
-        public string Get()
+        [Route("api/Sellers")]
+        [HttpGet]
+        public HttpResponseMessage Get()
         {
-            return "{\"error\": null, \"sellers\": [{\"id\" : 1, \"name\" : \"Fabian\", \"lastn\" : \"Montero\"}]}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null, \"sellers\": [{\"id\" : 1, \"name\" : \"Fabian\", \"lastn\" : \"Montero\"}]}");
+            return response;
         }
 
         // GET: api/Sellers/5
-        public string Get(int id)
+        [Route("api/Sellers/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage Get(int id)
         {
-            return "{\"error\": null, {\"id\" : 1, \"name\" : \"Fabian\", \"lastn\" : \"Montero\"}}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null, {\"id\" : 1, \"name\" : \"Fabian\", \"lastn\" : \"Montero\"}}");
         }
 
         // POST: api/Sellers
-        public string Post([FromBody]string value)
+        [Route("api/Sellers")]
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody]string value)
         {
-            return "{\"error\": null}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null}");
+            return response;
         }
 
         // PUT: api/Sellers/5
-        public string Put(int id, [FromBody]string value)
+        [Route("api/Sellers")]
+        [HttpPut]
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
-            return "{\"error\": null}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null}");
+            return response;
         }
 
         // DELETE: api/Sellers/5
-        public string Delete(int id)
+        [Route("api/Sellers/{id:int}")]
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
         {
-            return "{\"error\": null}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null}");
+            return response;
         }
     }
 }

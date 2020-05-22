@@ -4,53 +4,65 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-/*
-# crear producto
-
-# buscar producto
-POST /products/search
-<= {<<\"name\" : str>>, <<\"desc\" : str>>, <<\"seller\" : uid>>, <<\"price\" : int>>, <<\"tax\" : bool>>, <<\"disc\" : bool>>}
-=> Error | 
 
 
-# obtener todas los productos
-GET /products
-=> Error | 
-
-
-*/
 namespace tecboxapi777.Controllers
 {
     public class ProductsController : ApiController
     {
         // GET: api/Products
-        public string Get()
+        [Route("api/Products/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage Get()
         {
-            return "{\"error\": null, \"products\": [{\"id\" : 3, \"name\" : \"Prod1\", \"desc\" : \"desc1\", \"seller\" : 2, \"price\" : 100, \"tax\" : false, \"disc\" : true}]}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent( "{\"error\": null, \"products\": [{\"id\" : 3, \"name\" : \"Prod1\", \"desc\" : \"desc1\", \"seller\" : 2, \"price\" : 100, \"tax\" : false, \"disc\" : true}]}");
+            return response;
         }
 
         // GET: api/Products/5
-        public string Get(int id)
+        [Route("api/Products/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage Get(int id)
         {
-            return "{\"error\": null, {\"id\" : 3, \"name\" : \"Prod1\", \"desc\" : \"desc1\", \"seller\" : 2, \"price\" : 100, \"tax\" : false, \"disc\" : true}}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent( "{\"error\": null, {\"id\" : 3, \"name\" : \"Prod1\", \"desc\" : \"desc1\", \"seller\" : 2, \"price\" : 100, \"tax\" : false, \"disc\" : true}}");
+            return response;
         }
 
         // POST: api/Products
-        public string Post([FromBody]string value)
+        [Route("api/Products")]
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody]string value)
         {
-            return "{\"error\": null}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent( "{\"error\": null}");
+            return response;
         }
 
         // PUT: api/Products/5
-        public string Put(int id, [FromBody]string value)
+        [Route("api/Products")]
+        [HttpPut]
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
-            return "{\"error\": null}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent( "{\"error\": null}");
+            return response;
         }
 
         // DELETE: api/Products/5
-        public string Delete(int id)
+        [Route("api/Products/{id:int}")]
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
         {
-            return "{\"error\": null}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent( "{\"error\": null}");
+            return response;
         }
     }
 }

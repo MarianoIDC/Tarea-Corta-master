@@ -10,15 +10,25 @@ namespace tecboxapi777.Controllers
     public class PackagestatusController : ApiController
     {
         // GET: api/Packagestatus/5
-        public string Get(int id)
+        [Route("api/Packageststus/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage Get(int id)
         {
-            return "{ \"error\": null, \"packages\": [{\"status\" : \"alive\"}]}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{ \"error\": null, \"packages\": [{\"status\" : \"alive\"}]}");
+            return response;
         }
 
         // PUT: api/Packagestatus/5
-        public string Put(int id, [FromBody]string value)
+        [Route("api/Packagestatus")]
+        [HttpPut]
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
-            return "{\"error\": null}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null}");
+            return response;
         }
     }
 }

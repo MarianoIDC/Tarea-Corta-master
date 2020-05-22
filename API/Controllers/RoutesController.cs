@@ -19,33 +19,58 @@ namespace tecboxapi777.Controllers
     public class RoutesController : ApiController
     {
         // GET: api/Routes
-        public string Get()
+        [Route("api/Routes/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage Get()
         {
-            return "{\"error\": null, \"routes\": [{\"id\" : 1, \"distr\" : [\"heredia\"]}]}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null, \"routes\": [{\"id\" : 1, \"distr\" : [\"heredia\"]}]}");
+            return response;
         }
 
         // GET: api/Routes/5
-        public string Get(int id)
+        [Route("api/Routes/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage Get(int id)
         {
-            return "{\"error\": null, {\"id\" : 1, \"distr\" : [\"heredia\"]}}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null, {\"id\" : 1, \"distr\" : [\"heredia\"]}}");
+            return response;
         }
 
         // POST: api/Routes
-        public string Post([FromBody]string value)
+        [Route("api/Routes")]
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody]string value)
         {
-            return "{\"error\": null, \"id\" : 1}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null, \"id\" : 1}");
+            return response;
         }
 
         // PUT: api/Routes/5
-        public string Put(int id, [FromBody]string value)
+        [Route("api/Routes")]
+        [HttpPut]
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
-            return "{\"error\": null}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null}");
+            return response;
         }
 
         // DELETE: api/Routes/5
-        public string Delete(int id)
+        [Route("api/Routes/{id:int}")]
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
         {
-            return "{\"error\": null}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null}");
+            return response;
         }
     }
 }
