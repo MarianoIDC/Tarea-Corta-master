@@ -10,9 +10,14 @@ namespace tecboxapi777.Controllers
     public class StatsTopController : ApiController
     {
         // POST: api/Statstop
-        public string Post([FromBody]string value)
+        [Route("api/Statstop")]
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody]string value)
         {
-            return "{\"error\": null, \"top\": [{\"id\" : 1}]}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null, \"top\": [{\"id\" : 1}]}");
+            return response;
         }
     }
 }

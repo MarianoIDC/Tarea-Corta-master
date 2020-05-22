@@ -10,33 +10,58 @@ namespace tecboxapi777.Controllers
     public class BranchesController : ApiController
     {
         // GET: api/Branches
-        public string Get()
+        [Route("api/Branches")]
+        [HttpGet]
+        public HttpResponseMessage Get()
         {
-            return "{ \"error\": null, \"branches\": [{\"id\" : 1, \"name\" : \"Heredia\", \"addr\" : \"Calle 3, san Francisco\", \"tel\" : 87656192, \"manag\" : \"Fabian Montero\"}]}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{ \"error\": null, \"branches\": [{\"id\" : 1, \"name\" : \"Heredia\", \"addr\" : \"Calle 3, san Francisco\", \"tel\" : 87656192, \"manag\" : \"Fabian Montero\"}]}");
+            return response;
         }
 
         // GET: api/Branches/5
-        public string Get(int id)
+        [Route("api/Branches/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage Get(int id)
         {
-            return "{ \"error\": null, {\"id\" : 1, \"name\" : \"Heredia\", \"addr\" : \"Calle 3, san Francisco\", \"tel\" : 87656192, \"manag\" : \"Fabian Montero\"}}"; ;
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{ \"error\": null, {\"id\" : 1, \"name\" : \"Heredia\", \"addr\" : \"Calle 3, san Francisco\", \"tel\" : 87656192, \"manag\" : \"Fabian Montero\"}}"); ;
+            return response;
         }
 
         // POST: api/Branches
-        public string Post([FromBody]string value)
+        [Route("api/Branches")]
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody]string value)
         {
-            return "{\"error\": null, \"id\" : 1}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null, \"id\" : 1}");
+            return response;
         }
 
         // PUT: api/Branches/5
-        public string Put(int id, [FromBody]string value)
+        [Route("api/Branches")]
+        [HttpPut]
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
-            return "{\"error\": null}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null}");
+            return response;
         }
 
         // DELETE: api/Branches/5
-        public string Delete(int id)
+        [Route("api/Branches/{id:int}")]
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
         {
-            return "{\"error\": null}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null}");
+            return response;
         }
     }
 }

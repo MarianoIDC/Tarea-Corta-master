@@ -10,34 +10,58 @@ namespace tecboxapi777.Controllers
     public class RolesController : ApiController
     {
         // GET: api/Roles
-        public string Get()
+        [Route("api/Roles/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage Get()
         {
-            return "{\"error\": null, \"roles\": [{\"id\" : 1, \"name\" : \"fabian\", \"desc\" : \"lorem ipsum\"}]}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null, \"roles\": [{\"id\" : 1, \"name\" : \"fabian\", \"desc\" : \"lorem ipsum\"}]}");
+            return response;
         }
 
         // GET: api/Roles/5
-        public string Get(int id)
+        [Route("api/Roles/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage Get(int id)
         {
-            return "{\"error\": null, {\"id\" : 1, \"name\" : \"fabian\", \"desc\" : \"lorem ipsum\"}}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\": null, {\"id\" : 1, \"name\" : \"fabian\", \"desc\" : \"lorem ipsum\"}}");
+            return response;
         }
 
         // POST: api/Roles
-        //TODO: hacer que retorne solo el ID, no el value entero
-        public string Post([FromBody]string value)
+        [Route("api/Roles")]
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody]string value)
         {
-            return "{\"error\":null, \"id\":" + value + "}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\":null, \"id\":\"1\"}");
+            return response;
         }
 
         // PUT: api/Roles/5
-        public string Put(int id, [FromBody]string value)
+        [Route("api/Roles")]
+        [HttpPut]
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
-            return "{\"error\":null}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\":null}");
+            return response;
         }
 
         // DELETE: api/Roles/5
-        public string Delete(int id)
+        [Route("api/Roles/{id:int}")]
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
         {
-            return "{\"error\":null}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{\"error\":null}");
+            return response;
         }
 
     }

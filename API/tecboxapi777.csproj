@@ -170,7 +170,6 @@
     <Compile Include="Controllers\StatsdeliveredController.cs" />
     <Compile Include="Controllers\StatsdeliveryController.cs" />
     <Compile Include="Controllers\StatstopController.cs" />
-    <Compile Include="Controllers\TestttController.cs" />
     <Compile Include="Controllers\WorkersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

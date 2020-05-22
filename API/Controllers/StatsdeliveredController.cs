@@ -10,9 +10,16 @@ namespace tecboxapi777.Controllers
     public class StatsdeliveredController : ApiController
     {
         // POST: api/Statsdelivered
-        public string Post([FromBody]string value)
+        [Route("api/Statsdelivered")]
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody]string value)
         {
-            return "{'error': null, 'dlist': [{'id' :: 1}]}";
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
+            response.Content = new StringContent("{'error': null, 'dlist': [{'id' :: 1}]}");
+            return response;
         }
     }
 }
+
+
