@@ -1,0 +1,227 @@
+﻿Error = {'error': 'mensaje de error'}
+date = 'YYYY-MM-DD'
+<<opcional>>
+<argumento>
+{json}
+API<=>cliente
+
+
+###############################ROLES############################################ //LISTO
+# crear rol
+POST /roles
+<= {'name' :: str, 'desc' :: str}
+=> Error | {'error': null, 'id' :: int}
+
+# cambiar rol
+PUT /roles/<id :: uint>
+<= {<<'name' :: str>>, <<'desc' :: str>>}
+=> Error | {'error': null}
+
+# obtener todos los roles
+GET /roles
+=> Error | {'error': null, 'roles': [{'id' :: uint, 'name' :: str, 'desc' :: str}, ...]}
+
+# eliminar rol
+DELETE /roles/<id :: uint>
+=> Error | {'error': null}
+
+
+###############################SUCURSALES############################################  //LISTO
+
+# crear sucursal
+POST /branches
+<= {'name' :: str, 'addr' :: str, 'tel' :: uint, 'manag' :: str}
+=> Error | {'error': null, 'id' :: int}
+
+# cambiar sucursal
+PUT /branches/<id :: uint>
+<= {<<'name' :: str>>, <<'addr' :: str>>, <<'tel' :: uint>>, <<'manag' :: str>>}
+=> Error | {'error': null}
+
+# obtener todas las sucursales
+GET /branches
+=> Error | {'error': null, 'branches': [{'id' :: uint, 'name' :: str, 'addr' :: str, 'tel' :: uint, 'manag' :: str}, ...]}
+
+# eliminar sucursal
+DELETE /branches/<id :: uint>
+=> Error | {'error': null}
+
+
+###############################TRABAJADORES############################################ //LISTO
+
+# crear trabajdor
+POST /workers/<id :: uint>
+<= {'name' :: str, 'lastn' :: str, 'bdate' :: date, 'jdate' :: date, 'branch' :: uint, 'salary' :: int}
+=> Error | {'error': null}
+
+# cambiar trabajador
+PUT /workers/<id :: uint>
+<= {<<'name' :: str>>, <<'lastn' :: str>>, <<'bdate' :: date>>, <<'jdate' :: date>>, <<'branch' :: uint>>, <<'salary' :: int>>}
+=> Error | {'error': null}
+
+# obtener todas los trabajadores
+GET /workers
+=> Error | {'error': null, 'workers': [{'id' :: uint, 'name' :: str, 'lastn' :: str, 'bdate' :: date, 'jdate' :: date, 'branch' :: uint, 'salary' :: int}, ...]}
+
+# eliminar trabajador
+DELETE /workers/<id :: uint>
+=> Error | {'error': null}
+
+
+###############################VENDEDORES############################################ //LISTO
+
+# crear vendedor
+POST /sellers/<id :: uint>
+<= {'name' :: str, 'lastn' :: str}
+=> Error | {'error': null}
+
+# cambiar vendedor
+PUT /sellers/<id :: uint>
+<= {<<'name' :: str>>, <<'lastn' :: str>>}
+=> Error | {'error': null}
+
+# obtener todas los vendedor
+GET /sellers
+=> Error | {'error': null, 'sellers': [{'id' :: uint, 'name' :: str, 'lastn' :: str}, ...]}
+
+# eliminar vendedor
+DELETE /sellers/<id :: uint>
+=> Error | {'error': null}
+
+
+###############################PRODUCTOS############################################ // LISTO
+
+# crear producto
+POST /products/<id :: uint>
+<= {'name' :: str, 'desc' :: str, 'seller' :: uid, 'price' :: int, 'tax' :: bool, 'disc' :: bool}
+=> Error | {'error': null}
+
+# buscar producto
+POST /search
+<= {<<'name' :: str>>, <<'desc' :: str>>, <<'seller' :: uid>>, <<'price' :: int>>, <<'tax' :: bool>>, <<'disc' :: bool>>}
+=> Error | {'error': null, 'products': [{'id' :: uint, 'name' :: str, 'desc' :: str, 'seller' :: uid, 'price' :: int, 'tax' :: bool, 'disc' :: bool}, ...]}
+
+# cambiar producto
+PUT /products/<id :: uint>
+<= {<<'name' :: str>>, <<'desc' :: str>>, <<'seller' :: uid>>, <<'price' :: int>>, <<'tax' :: bool>>, <<'disc' :: bool>>}
+=> Error | {'error': null}
+
+# obtener todas los productos
+GET /products
+=> Error | {'error': null, 'products': [{'id' :: uint, 'name' :: str, 'desc' :: str, 'seller' :: uid, 'price' :: int, 'tax' :: bool, 'disc' :: bool}, ...]}
+
+# eliminar producto
+DELETE /products/<id :: uint>
+=> Error | {'error': null}
+
+
+###############################RUTAS############################################ //LISTO
+
+# crear ruta
+POST /routes
+<= {'distr' :: []}
+=> Error | {'error': null, 'id' :: int}
+
+# cambiar ruta
+PUT /routes/<id :: uint>
+<= {<<'distr' :: []>>}
+=> Error | {'error': null}
+
+# obtener todas los ruta
+GET /routes
+=> Error | {'error': null, 'routes': [{'id' :: uint, 'distr' :: []}, ...]}
+
+# eliminar ruta
+DELETE /routes/<id :: uint>
+=> Error | {'error': null}
+
+
+###############################PAQUETES############################################ //LISTO
+
+# crear paquete
+POST /packages/<id :: uint>
+<= {'client' :: str, 'desc' :: str, 'ddate' :: date}
+=> Error | {'error': null}
+
+# cambiar paquete
+PUT /packages/<id :: uint>
+<= {<<'client' :: str>>, <<'desc' :: str>>, <<'ddate' :: date>>}
+=> Error | {'error': null}
+
+# obtener todas los paquete
+GET /packages
+=> Error | {'error': null, 'packages': [{'id' :: uint, 'client' :: str, 'desc' :: str, 'ddate' :: date}, ...]}
+
+# eliminar paquete
+DELETE /packages/<id :: uint>
+=> Error | {'error': null}
+
+
+###############################RASTREO DE PAQUETES############################################ // LISTO
+
+# cambiar paquete
+PUT /packagestatus
+<= {id :: uint, <<'status' :: str>>}
+=> Error | {'error': null}
+
+# obtener todas los paquete
+GET /packagestatus/<id :: uint>
+=> Error | {'error': null, 'packages': [{'status' :: str}, ...]}
+
+
+###############################REPORTES############################################ //LISTO
+
+# 25 productos más vendidos en cierto tiempo
+POST /stats/top
+<= {'start' :: date, 'end' :: date}
+=> Error | {'error': null, 'top': [{'id' :: uint}, ...]}
+
+# listado de reparto
+GET /stats/delivery
+=> Error | {'error': null, 'dlist': [{'id' :: uint}, ...]}
+
+POST /stats/delivered
+<= {'start' :: date, 'end' :: date}
+=> Error | {'error': null, 'dlist': [{'id' :: uint}, ...]}
+
+
+###############################CLIENTES/CASILLEROS############################################ 
+
+# crear cliente
+POST /customers/<id :: uint>
+<= {'name' :: str, 'lastn' :: str, 'email' :: str, 'locker' :: int, 'tel' :: int, 'cel' :: int, 'addr' :: str, 'usr' :: str, 'pwd' :: str}
+=> Error | {'error': null}
+
+# cambiar cliente
+PUT /customers/<id :: uint>
+<= {<<'name' :: str>>, <<'lastn' :: str>>, <<'email' :: str>>, <<'locker' :: int>>, <<'tel' :: int>>, <<'cel' :: int>>, <<'addr' :: str>>, <<'usr' :: str>>, <<'pwd' :: str>>}
+=> Error | {'error': null}
+
+# obtener todas los clientes
+GET /customers
+=> Error | {'error': null, 'customers': [{'id' :: uint, 'name' :: str, 'lastn' :: str, 'email' :: str, 'locker' :: int, 'tel' :: int, 'cel' :: int, 'addr' :: str, 'usr' :: str, 'pwd' :: str}, ...]}
+
+# eliminar customers
+DELETE /customers/<id :: uint>
+=> Error | {'error': null}
+
+
+###############################PURCHASES############################################ // LISTO
+
+# crear compra
+POST /purchases
+<= {'prods' :: [{id :: uint, 'qty' :: int}, ...]}
+=> Error | {'error': null, 'id' :: int}
+
+# cambiar compra
+PUT /purchases/<id :: uint>
+<= {<<'prods' :: [{id :: uint, 'qty' :: int}, ...]>>}
+=> Error | {'error': null}
+
+# obtener todas los compras
+GET /purchases
+=> Error | {'error': null, 'prods' :: [{id :: uint, 'qty' :: int}, ...], 'totalp' :: int, 'totals' :: int, 'disc' :: int, 'tax' :: int}
+
+# eliminar compra
+DELETE /purchases/<id :: uint>
+=> Error | {'error': null}
