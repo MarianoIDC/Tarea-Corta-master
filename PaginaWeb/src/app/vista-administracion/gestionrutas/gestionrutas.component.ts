@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { Route } from './route';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-gestionrutas',
@@ -7,7 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GestionrutasComponent implements OnInit {
 
-  constructor() { }
+  readonly ROOT_URL = 'https://jsonplaceholder.typicode.com';
+  routes: Observable<any>;
+  newPackage: Observable<any>;
+
+  constructor(private http: HttpClient) { }
+
+  getRoutes(){
+    this.routes = this.http.get(this.ROOT_URL + '/posts');
+
+  }
+
 
   ngOnInit(): void {
   }

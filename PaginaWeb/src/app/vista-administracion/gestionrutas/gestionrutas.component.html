@@ -4,7 +4,15 @@
     <div class="row">
         <div class="col-sm-12 my-1">
             <h1 class="display-4 text-uppercase text-center mt-1" style="color: aliceblue;">Gestión de Rutas</h1>
-
+            <button (click) = "getRoutes()"> 
+            Track</button>
+            <div *ngFor = "let route of routes |
+            async">
+                                                        
+                {{ route | json }}   
+                                                        
+            </div>
+            <hr>
             <app-piepagina></app-piepagina>
         </div>
     </div>

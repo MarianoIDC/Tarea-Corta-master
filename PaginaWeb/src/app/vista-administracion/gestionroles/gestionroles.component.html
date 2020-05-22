@@ -4,7 +4,15 @@
     <div class="row">
         <div class="col-sm-12 my-1">
             <h1 class="display-4 text-uppercase text-center mt-1" style="color: aliceblue;">Gestión de Roles</h1>
-
+            <button (click) = "getRoles()"> 
+            Track</button>
+            <div *ngFor = "let role of roles |
+            async">
+                                                
+                {{ role | json }}   
+                                                
+            </div>
+            <hr>
             <app-piepagina></app-piepagina>
         </div>
     </div>

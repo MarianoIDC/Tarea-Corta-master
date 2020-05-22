@@ -4,7 +4,16 @@
     <div class="row">
         <div class="col-sm-12 my-1">
             <h1 class="display-4 text-uppercase text-center mt-1" style="color: aliceblue;">Compra de Productos</h1>
-
+            
+            <button (click) = "getProducts()"> 
+            Track</button>
+            <div *ngFor = "let product of products |
+            async">
+        
+                {{ product | json }}   
+        
+            </div>
+            <hr>
             <app-piepagina></app-piepagina>
         </div>
     </div>
