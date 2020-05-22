@@ -1,0 +1,34 @@
+Los Archivos tsconfig.json y tslint.json son archivos de configuracion para typescript. 
+
+
+package.json esta relacionada con node_modules, que son archivos necesarios de Angular
+
+Las JS son para animaciones mas que todo
+
+package-lock, package, y node_modules no se tocan, son codigos nativos de Angular
+
+e2e es una carpeta para hacer testing(pero es muy avanzado)
+
+editorcofin es la configuracion del editorcofin
+
+gitignore es para meter archivos que no es necesario subir al gitHub
+
+src es donde se trabaja el codigo de la aplicacion. 
+
+index.html es donde vive la aplicacion. 
+
+en index.html esta la app principal, que llama mediante a etiquetas a app-root
+
+en assets van los recursos
+
+en app:
+
+    app.module.ts, es el modulo inicial
+    main.ts lee el app.module.ts
+
+    en el app.module.ts tenemos que importar los componentes = import {Que clase} from el path del archivo. 
+    en @NgModule tenemos que agregar cada componente que creamos
+
+    
+
+
